@@ -188,7 +188,7 @@ fn main() {
                 let mut user_input = String::new();
 
                 print!("Type decryption token: ");
-                stdout().flush();
+                let _ = stdout().flush();
 
                 let _ = std::io::stdin().read_line(&mut user_input);
                 let user_token = check_arg(user_input);
