@@ -38,7 +38,7 @@ fn main() {
     let mut custom_token = functions::check_arg(args.custom_token);
 
     let input_mode = match functions::check_arg(input.clone()) {
-        Some(t) => false,
+        Some(_) => false,
         None => true
     };
 
@@ -134,7 +134,7 @@ fn main() {
 
             if let Some(token) = custom_token {
                 match functions::check_token(token.clone()) {
-                    Ok(t) => {
+                    Ok(_) => {
                         output = algorithms::encrypt(input, token.clone());
 
                     },
@@ -171,7 +171,7 @@ fn main() {
 
             if let Some(token) = custom_token {
 
-                if let Ok(t) = functions::check_token(token.clone()) {
+                if let Ok(_) = functions::check_token(token.clone()) {
 
                     output = algorithms::decrypt(input.clone(), token.clone());
 
@@ -196,7 +196,7 @@ fn main() {
                 match user_token {
                     Some(token) => {
 
-                        if let Ok(t) = functions::check_token(token.clone()) {
+                        if let Ok(_) = functions::check_token(token.clone()) {
 
                             output = algorithms::decrypt(input, token.clone());
 
