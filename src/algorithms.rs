@@ -6,8 +6,8 @@ pub fn encrypt(input: String, token_string: String) -> String {
     let mut output = String::new();
 
     for c in input.chars() {
-        let ALPHABET_position = ALPHABET.iter().position(|r| *r == c);
-        match ALPHABET_position {
+        let alphabet_position = ALPHABET.iter().position(|r| *r == c);
+        match alphabet_position {
             Some(t) => {
                 output += &token[t].to_string();
             },
