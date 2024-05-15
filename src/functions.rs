@@ -1,8 +1,5 @@
-use clap::arg;
 use rand::{thread_rng, seq::SliceRandom };
 use std::collections::HashSet;
-use std::process::exit;
-use colored::Colorize;
 
 use crate::{functions, TOKEN_LEN};
 

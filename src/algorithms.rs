@@ -1,13 +1,13 @@
-const alphabet: [char; 57] = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+const ALPHABET: [char; 57] = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
     '!', '?', '.', ',', '/', '(', ')', '[', ']', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '=', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
 pub fn encrypt(input: String, token_string: String) -> String {
     let token = token_string.chars().collect::<Vec<char>>();
     let mut output = String::new();
 
-    for (i, c) in input.chars().enumerate() {
-        let alphabet_position = alphabet.iter().position(|r| *r == c);
-        match alphabet_position {
+    for c in input.chars() {
+        let ALPHABET_position = ALPHABET.iter().position(|r| *r == c);
+        match ALPHABET_position {
             Some(t) => {
                 output += &token[t].to_string();
             },
@@ -22,11 +22,11 @@ pub fn decrypt(input: String, token_string: String) -> String {
     let token = token_string.chars().collect::<Vec<char>>();
     let mut output = String::new();
 
-    for (i, c) in input.chars().enumerate() {
+    for c in input.chars() {
         let token_position = &token.iter().position(|r| *r == c);
         match token_position {
             Some(t) => {
-                output += alphabet[*t].to_string().as_str();
+                output += ALPHABET[*t].to_string().as_str();
             },
             None => {}
         };
