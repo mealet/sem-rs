@@ -1,7 +1,7 @@
 use rand::{thread_rng, seq::SliceRandom };
 use std::collections::HashSet;
 
-use crate::{functions, TOKEN_LEN};
+use crate::{ functions, TOKEN_LEN };
 
 pub fn check_arg(argument: String) -> Option<String> {
     let none_stroke = "none".to_string();

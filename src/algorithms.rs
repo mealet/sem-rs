@@ -11,7 +11,7 @@ pub fn encrypt(input: String, token_string: String) -> String {
             Some(t) => {
                 output += &token[t].to_string();
             },
-            None => {}
+            None => {  }
         };
     }
 

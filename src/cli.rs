@@ -33,5 +33,5 @@ pub struct Args {
         default_value = "none",
         display_order = 3
     )]
-    pub custom_token: String
+    pub custom_token: String,
 }

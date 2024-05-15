@@ -120,7 +120,7 @@ fn main() {
                                    opt,
     );
 
-    println!("{}", greeting_message);
+    println!( "{}", greeting_message );
 
     // Main Process
 
