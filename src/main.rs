@@ -114,14 +114,6 @@ fn main() {
         args_opt = imode_mode;
     }
 
-    // Greeting
-
-    let opt = match args_opt {
-        1 => "encrypt",
-        2 => "decrypt",
-        _ => "error",
-    };
-
     // Main Process
 
     match args_opt {
