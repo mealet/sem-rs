@@ -63,6 +63,7 @@ fn main() {
         let mut imode_token;
 
         // Requesting mode
+
         let mut temp = String::new();
 
         print!("Choose your mode (1 - encrypt, 2 - decrypt): ");
