@@ -1,7 +1,7 @@
-use rand::{thread_rng, seq::SliceRandom };
+use rand::{seq::SliceRandom, thread_rng};
 use std::collections::HashSet;
 
-use crate::{ functions, TOKEN_LEN };
+use crate::{functions, TOKEN_LEN};
 
 pub fn check_arg(argument: String) -> Option<String> {
     let none_stroke = "none".to_string();
@@ -37,7 +37,7 @@ pub fn remove_duplicates(input: &String) -> String {
     input.chars().filter(|&c| seen.insert(c)).collect()
 }
 
-pub fn check_token(token: String) -> Result<(), String>{
+pub fn check_token(token: String) -> Result<(), String> {
     if token.len() < TOKEN_LEN {
         return Err((format!("TOKEN's length must be at least {} symbols", TOKEN_LEN)));
     }

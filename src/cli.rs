@@ -1,10 +1,7 @@
 use clap::Parser;
 
 #[derive(Parser, Debug)]
-#[clap(
-    name="sem",
-    long_about = "Encryption and Decryption by token string"
-)]
+#[clap(name = "sem", long_about = "Encryption and Decryption by token string")]
 pub struct Args {
     #[clap(
         short = 'i',
@@ -21,7 +18,7 @@ pub struct Args {
         help = "Program option. 1 - encrypt, 2 - decrypt",
         default_value_t = 1,
         value_name = "number",
-        display_order = 2,
+        display_order = 2
     )]
     pub opt: u8,
 

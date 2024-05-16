@@ -1,5 +1,9 @@
-const ALPHABET: [char; 57] = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-    '!', '?', '.', ',', '/', '(', ')', '[', ']', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '=', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+const ALPHABET: [char; 60] = [
+    ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+    's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '?', '.', ',', '/', '(', ')', '[', ']', '@', '#',
+    '$', '%', '^', '&', '*', '-', '_', '+', '=', '`', '~', '"', '1', '2', '3', '4', '5', '6', '7',
+    '8', '9', '0',
+];
 
 pub fn encrypt(input: String, token_string: String) -> String {
     let token = token_string.chars().collect::<Vec<char>>();
@@ -10,8 +14,8 @@ pub fn encrypt(input: String, token_string: String) -> String {
         match alphabet_position {
             Some(t) => {
                 output += &token[t].to_string();
-            },
-            None => {  }
+            }
+            None => {}
         };
     }
 
@@ -27,7 +31,7 @@ pub fn decrypt(input: String, token_string: String) -> String {
         match token_position {
             Some(t) => {
                 output += ALPHABET[*t].to_string().as_str();
-            },
+            }
             None => {}
         };
     }
@@ -37,12 +41,15 @@ pub fn decrypt(input: String, token_string: String) -> String {
 
 #[cfg(test)]
 mod tests {
-    use crate::functions::generate_token;
     use super::*;
+    use crate::functions::generate_token;
 
     #[test]
     fn test_encryption() {
-        let encrypted = encrypt("hello world".to_string(), "n01t]W;6sDRbX?d}x-KG~&BJoA9".to_string());
+        let encrypted = encrypt(
+            "hello world".to_string(),
+            "n01t]W;6sDRbX?d}x-KG~&BJoA9".to_string(),
+        );
 
         println!("{}", encrypted);
 
