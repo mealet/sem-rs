@@ -39,7 +39,7 @@ pub fn remove_duplicates(input: &String) -> String {
 
 pub fn check_token(token: String) -> Result<(), String> {
     if token.len() < TOKEN_LEN {
-        return Err((format!("TOKEN's length must be at least {} symbols", TOKEN_LEN)));
+        return Err(format!("TOKEN's length must be at least {} symbols", TOKEN_LEN));
     }
     if functions::remove_duplicates(&token).len() < token.len() {
         return Err("TOKEN contains duplicates! Remove it and repeat".to_string());

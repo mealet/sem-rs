@@ -19,14 +19,18 @@ pub fn encrypt(input: String, token_string: String) -> String {
         };
     }
 
-    return output;
+    let reversed_output = output.chars().rev().collect::<String>();
+
+    return reversed_output;
 }
 
 pub fn decrypt(input: String, token_string: String) -> String {
     let token = token_string.chars().collect::<Vec<char>>();
     let mut output = String::new();
 
-    for c in input.chars() {
+    let reversed_input = input.chars().rev().collect::<String>();
+
+    for c in reversed_input.chars() {
         let token_position = &token.iter().position(|r| *r == c);
         match token_position {
             Some(t) => {

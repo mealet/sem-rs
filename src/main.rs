@@ -60,7 +60,7 @@ fn main() {
     if input_mode {
         let mut imode_mode = 0;
         let mut imode_input = String::new();
-        let mut imode_token;
+        let imode_token;
 
         // Requesting mode
 
@@ -70,7 +70,7 @@ fn main() {
         let _ = stdout().flush();
         let _ = stdin().read_line(&mut temp);
 
-        imode_mode = temp.trim().parse().unwrap_or_else(|e| {
+        imode_mode = temp.trim().parse().unwrap_or_else(|_e| {
             println!(
                 "{}",
                 "WARNING: Mode parsing error! Changing mode to default 1 (encrypt)"
@@ -169,7 +169,7 @@ fn main() {
                 if let Ok(_) = functions::check_token(token.clone()) {
                     output = algorithms::decrypt(input.clone(), token.clone());
 
-                    println!("\n{} {}", "Decrypted stroke: ".green(), output);
+                    println!("\n{} {}", "Decrypted stroke:".green(), output);
                 } else if let Err(e) = functions::check_token(token.clone()) {
                     eprintln!("{}", e.red());
                     exit(0);
@@ -190,7 +190,7 @@ fn main() {
                         if let Ok(_) = functions::check_token(token.clone()) {
                             output = algorithms::decrypt(input, token.clone());
 
-                            println!("\n{} {}", "Decrypted stroke: ".green(), output);
+                            println!("\n{} {}", "Decrypted stroke:".green(), output);
                         } else if let Err(e) = functions::check_token(token.clone()) {
                             eprintln!("{}", e.red());
                             exit(0);
