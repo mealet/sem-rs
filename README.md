@@ -30,7 +30,7 @@ If you won't set token program will generate and show it for you.
 3. Follow instructions
 
 > [!TIP]
-> You can use arguments for getting faster result. Use `--help` for more info.
+> You can also use arguments for getting faster result. Use `--help` for more info.
 
 # 😪 License
 Project licensed under the [MIT License](https://github.com/mealet/sem-rs/blob/main/LICENSE)
