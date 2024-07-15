@@ -1,15 +1,35 @@
-const ALPHABET: [char; 60] = [
+// String Encryption Method aka SEM
+// https://github.com/mealet/sem-rs
+// --------------------------------
+// Project licensed under the MIT License.
+// More in the LICENSE file/ String Encryption Method aka SEM
+// https://github.com/mealet/sem-rs
+// --------------------------------
+// Project licensed under the MIT License.
+// More in the LICENSE file
+
+use chrono::prelude::*;
+
+const ALPHABET: [char; 64] = [
     ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
     's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '?', '.', ',', '/', '(', ')', '[', ']', '@', '#',
     '$', '%', '^', '&', '*', '-', '_', '+', '=', '`', '~', '"', '1', '2', '3', '4', '5', '6', '7',
-    '8', '9', '0',
+    '8', '9', '0', ':', ';', '\\', '\n',
 ];
+
+pub const DEVCODE: &str = "0x7D9:";
 
 pub fn encrypt(input: String, token_string: String) -> String {
     let token = token_string.chars().collect::<Vec<char>>();
     let mut output = String::new();
 
-    for c in input.chars() {
+    let formatted_input = format!(
+        "{}--[timestamp:{}]",
+        input.clone().trim(),
+        Utc::now().timestamp()
+    );
+
+    for c in formatted_input.chars() {
         let alphabet_position = ALPHABET.iter().position(|r| *r == c);
         match alphabet_position {
             Some(t) => {
@@ -25,19 +45,31 @@ pub fn encrypt(input: String, token_string: String) -> String {
 }
 
 pub fn decrypt(input: String, token_string: String) -> String {
-    let token = token_string.chars().collect::<Vec<char>>();
+    let mut token = token_string.clone();
     let mut output = String::new();
 
-    let reversed_input = input.chars().rev().collect::<String>();
+    let mut dev_mode = false;
+
+    if token.starts_with(DEVCODE) {
+        dev_mode = true;
+        token = token.replace(format!("{}", DEVCODE).as_str(), "");
+    }
+
+    let token_chars = token.chars().collect::<Vec<char>>();
+    let reversed_input = input.trim().chars().rev().collect::<String>();
 
     for c in reversed_input.chars() {
-        let token_position = &token.iter().position(|r| *r == c);
+        let token_position = &token_chars.iter().position(|r| *r == c);
         match token_position {
             Some(t) => {
                 output += ALPHABET[*t].to_string().as_str();
             }
             None => {}
         };
+    }
+
+    if !dev_mode {
+        output = output.split("--[timestamp:").next().unwrap().to_string();
     }
 
     return output;

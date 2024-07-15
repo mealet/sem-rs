@@ -1,3 +1,9 @@
+// String Encryption Method aka SEM
+// https://github.com/mealet/sem-rs
+// --------------------------------
+// Project licensed under the MIT License.
+// More in the LICENSE file
+
 use rand::{seq::SliceRandom, thread_rng};
 use std::collections::HashSet;
 
@@ -38,10 +44,14 @@ pub fn remove_duplicates(input: &String) -> String {
 }
 
 pub fn check_token(token: String) -> Result<(), String> {
-    if token.len() < TOKEN_LEN {
-        return Err(format!("TOKEN's length must be at least {} symbols", TOKEN_LEN));
+    let formatted_token = token.replace(format!("{}", crate::algorithms::DEVCODE).as_str(), "");
+    if formatted_token.len() < TOKEN_LEN {
+        return Err(format!(
+            "TOKEN's length must be at least {} symbols",
+            TOKEN_LEN
+        ));
     }
-    if functions::remove_duplicates(&token).len() < token.len() {
+    if functions::remove_duplicates(&formatted_token).len() < formatted_token.len() {
         return Err("TOKEN contains duplicates! Remove it and repeat".to_string());
     }
 

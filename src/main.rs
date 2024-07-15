@@ -1,3 +1,9 @@
+// String Encryption Method aka SEM
+// https://github.com/mealet/sem-rs
+// --------------------------------
+// Project licensed under the MIT License.
+// More in the LICENSE file
+
 // English Alphabet Matches
 // a b c d e f g h i j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
 // 1 2 3 4 5 6 7 8 9 10 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27
@@ -12,7 +18,7 @@
 
 const APP_NAME: &str = env!("CARGO_PKG_NAME");
 const APP_VERSION: &str = env!("CARGO_PKG_VERSION");
-pub const TOKEN_LEN: usize = 60;
+pub const TOKEN_LEN: usize = 64;
 
 use clap::Parser;
 use colored::*;
@@ -39,7 +45,7 @@ fn main() {
 
     println!("{}", greeting_message);
 
-    let mut args_opt = args.opt;
+    let mut args_opt;
     let mut input = args.input;
     let mut custom_token = functions::check_arg(args.custom_token);
 
@@ -58,7 +64,7 @@ fn main() {
     // Input Mode
 
     if input_mode {
-        let mut imode_mode = 0;
+        let mut imode_mode;
         let mut imode_input = String::new();
         let imode_token;
 
