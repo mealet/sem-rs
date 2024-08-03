@@ -2,10 +2,6 @@
 // https://github.com/mealet/sem-rs
 // --------------------------------
 // Project licensed under the MIT License.
-// More in the LICENSE file/ String Encryption Method aka SEM
-// https://github.com/mealet/sem-rs
-// --------------------------------
-// Project licensed under the MIT License.
 // More in the LICENSE file
 
 use chrono::prelude::*;
